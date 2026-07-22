@@ -1,0 +1,28 @@
+# Virtual environment
+venv/
+.venv/
+env/
+ENV/
+
+# Python cache
+**/__pycache__/
+**/*.py[cod]
+**/*$py.class
+
+# Databases
+*.db
+*.sqlite3
+
+# Node modules / build outputs
+node_modules/
+dist/
+dist-ssr/
+.oxlintrc.json
+
+# IDE/Editor folders
+.idea/
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
