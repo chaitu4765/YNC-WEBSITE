@@ -370,15 +370,20 @@ export const api = {
 };
 
 // --- MOCK LOCALSTORAGE DATABASE FOR STANDALONE OR OFFLINE MODE ---
-// Initialize mock database in localStorage if empty
 const initMockDb = () => {
+  // Auto-clear cache if it contains outdated user phone numbers
+  const cachedUsers = localStorage.getItem('ycn_mock_users');
+  if (cachedUsers && (cachedUsers.includes('9876543210') || cachedUsers.includes('1234567890'))) {
+    localStorage.removeItem('ycn_mock_users');
+  }
+
   if (!localStorage.getItem('ycn_mock_users')) {
     localStorage.setItem('ycn_mock_users', JSON.stringify([
       {
         id: 1,
         full_name: 'YCN Administrator',
         email: 'admin@ycn.com',
-        phone_number: '+1234567890',
+        phone_number: '+91 94931 55774',
         role: 'admin',
         member_id: 'YCN-2026-0001',
         membership_status: 'active',
@@ -388,7 +393,7 @@ const initMockDb = () => {
         id: 2,
         full_name: 'Chaitanya Kumar',
         email: 'user@ycn.com',
-        phone_number: '+919876543210',
+        phone_number: '+91 94931 55774',
         role: 'user',
         member_id: 'YCN-2026-1234',
         membership_status: 'active',

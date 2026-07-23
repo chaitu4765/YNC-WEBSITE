@@ -17,7 +17,6 @@ def seed():
             admin = User(
                 full_name="YCN Administrator",
                 email="admin@ycn.com",
-                phone_number="+1234567890",
                 password_hash=hash_password("admin123"),
                 role="admin",
                 member_id="YCN-2026-0001",
@@ -26,14 +25,14 @@ def seed():
                 join_date=datetime.datetime.utcnow() - datetime.timedelta(days=30)
             )
             db.add(admin)
-            print("Seeded admin user: admin@ycn.com / admin123")
+        admin.phone_number = "+91 94931 55774"
+        print("Seeded admin user: admin@ycn.com / admin123")
             
         user = db.query(User).filter(User.email == "user@ycn.com").first()
         if not user:
             user = User(
                 full_name="Chaitanya Kumar",
                 email="user@ycn.com",
-                phone_number="+919876543210",
                 password_hash=hash_password("user123"),
                 role="user",
                 member_id="YCN-2026-1234",
@@ -49,7 +48,8 @@ def seed():
                 join_date=datetime.datetime.utcnow() - datetime.timedelta(days=15)
             )
             db.add(user)
-            print("Seeded demo user: user@ycn.com / user123")
+        user.phone_number = "+91 94931 55774"
+        print("Seeded demo user: user@ycn.com / user123")
             
         # Check if events already exist
         prom = db.query(Event).filter(Event.title == "PROM NIGHT 2026").first()
