@@ -28,10 +28,10 @@ export const DigitalIdCard = ({ user, onClick }) => {
 
   const formattedJoinDate = user?.join_date
     ? new Date(user.join_date).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-      })
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    })
     : 'July 18, 2026';
 
   const isPremium = user?.membership_tier === 'premium';
@@ -48,11 +48,10 @@ export const DigitalIdCard = ({ user, onClick }) => {
           transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(${isHovered ? 1.02 : 1})`,
           transition: isHovered ? 'none' : 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)',
         }}
-        className={`w-full max-w-sm h-80 rounded-2xl relative cursor-pointer overflow-hidden p-6 border shadow-xl flex flex-col justify-between group class-card-container animate-float ${
-          isPremium
+        className={`w-full max-w-sm h-80 rounded-2xl relative cursor-pointer overflow-hidden p-6 border shadow-xl flex flex-col justify-between group class-card-container animate-float ${isPremium
             ? 'bg-gradient-to-br from-amber-900/40 via-amber-950/60 to-slate-950 border-amber-400/40 shadow-lg'
             : 'glass-card border-slate-200/80 dark:border-white/10'
-        }`}
+          }`}
       >
         {/* Card Header */}
         <div className="flex justify-between items-center z-10">
@@ -83,9 +82,8 @@ export const DigitalIdCard = ({ user, onClick }) => {
         <div className="flex items-center gap-4 my-auto z-10">
           {/* Profile Picture Frame */}
           <div className="relative">
-            <div className={`absolute -inset-0.5 rounded-full blur-xs group-hover:opacity-100 transition-opacity ${
-              isPremium ? 'bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-500 opacity-90' : 'bg-gradient-to-r from-primary via-secondary to-accent opacity-70'
-            }`} />
+            <div className={`absolute -inset-0.5 rounded-full blur-xs group-hover:opacity-100 transition-opacity ${isPremium ? 'bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-500 opacity-90' : 'bg-gradient-to-r from-primary via-secondary to-accent opacity-70'
+              }`} />
             <div className="w-20 h-20 rounded-full bg-slate-100 dark:bg-darkbg flex items-center justify-center overflow-hidden border-2 border-white dark:border-slate-800 relative z-10 shadow-inner">
               {user?.profile_picture ? (
                 <img
@@ -109,7 +107,7 @@ export const DigitalIdCard = ({ user, onClick }) => {
               ID: <span className="font-mono text-slate-700 dark:text-slate-300 font-bold">{user?.member_id || 'YCN-2026-1234'}</span>
             </p>
             <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 font-medium truncate">{user?.email || 'user@ycn.com'}</p>
-            <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">{user?.phone_number || '+91 98765 43210'}</p>
+            <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">{user?.phone_number || '+91 89199 54925 '}</p>
           </div>
         </div>
 
