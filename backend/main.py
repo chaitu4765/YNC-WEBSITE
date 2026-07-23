@@ -28,7 +28,8 @@ app = FastAPI(title="YCN (Youth Networking Community) API")
 # Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # For local development simplicity
+    allow_origins=[],
+    allow_origin_regex="https?://.*",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
