@@ -7,6 +7,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from sqlalchemy import func
 
+import sys
+import os
+# Add the parent directory of the current file to sys.path
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from backend.database import engine, Base, get_db
 from backend.models import User, Event, Registration, RecruitmentApplication, Announcement, Notification
 from backend.schemas import (
