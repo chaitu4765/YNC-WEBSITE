@@ -255,16 +255,7 @@ export const EventDetailsPage = () => {
                   </div>
                 </div>
 
-                {/* Seats Left */}
-                <div className="flex gap-3 items-start text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-300">
-                  <Users className="w-5 h-5 text-teal-400 shrink-0 mt-0.5" />
-                  <div>
-                    <span className="text-[10px] uppercase font-bold text-slate-400 block leading-none">Available Seats</span>
-                    <span className="mt-1 block font-bold">
-                      {event.available_seats} <span className="text-slate-400 font-medium">/ {event.capacity} total slots</span>
-                    </span>
-                  </div>
-                </div>
+
               </div>
 
               {/* Deadline Warn */}

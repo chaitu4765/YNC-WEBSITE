@@ -209,14 +209,7 @@ export const LandingPage = () => {
                 </div>
 
                 {/* Register Button */}
-                <div className="flex items-center justify-between gap-4 flex-wrap">
-                  <div className="text-left">
-                    <span className="text-[10px] uppercase font-bold text-slate-400">Available Slots</span>
-                    <p className="text-lg font-extrabold text-slate-800 dark:text-white">
-                      {featuredEvent.available_seats} <span className="text-xs font-semibold text-slate-400">/ {featuredEvent.capacity} left</span>
-                    </p>
-                  </div>
-                  
+                <div className="flex items-center justify-end gap-4 flex-wrap w-full">
                   {userRegisteredEventIds.includes(featuredEvent.id) ? (
                     <button
                       disabled
@@ -339,9 +332,7 @@ export const LandingPage = () => {
                         👑 VIP Private
                       </div>
                     )}
-                    <div className="absolute top-4 right-4 bg-slate-900/60 dark:bg-white/10 backdrop-blur-md border border-white/10 px-3 py-1 rounded-full text-[10px] font-bold text-white uppercase tracking-wider">
-                      {event.available_seats} / {event.capacity} seats left
-                    </div>
+
                   </div>
 
                   {/* Body Content */}
