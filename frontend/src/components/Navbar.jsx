@@ -111,7 +111,8 @@ export const Navbar = () => {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-darkbg-border dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 transition-all hover:scale-105"
+              title="Toggle theme"
+              className="p-2 rounded-xl bg-slate-200/40 hover:bg-slate-200/70 dark:bg-slate-800/40 dark:hover:bg-slate-800/70 text-slate-600 dark:text-slate-300 border border-slate-200/50 dark:border-white/5 backdrop-blur-md transition-all hover:scale-105 hover:shadow-sm"
             >
               {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
@@ -125,13 +126,17 @@ export const Navbar = () => {
                       setNotifDropdownOpen(!notifDropdownOpen);
                       setProfileDropdownOpen(false);
                     }}
-                    className="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-darkbg-border dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 relative transition-all hover:scale-105"
+                    title="Notifications"
+                    className="p-2 rounded-xl bg-slate-200/40 hover:bg-slate-200/70 dark:bg-slate-800/40 dark:hover:bg-slate-800/70 text-slate-600 dark:text-slate-300 border border-slate-200/50 dark:border-white/5 backdrop-blur-md relative transition-all hover:scale-105 hover:shadow-sm"
                   >
                     <Bell className="w-5 h-5" />
                     {unreadCount > 0 && (
-                      <span className="absolute top-0 right-0 w-4 h-4 bg-rose-500 rounded-full border-2 border-white dark:border-darkbg flex items-center justify-center text-[9px] font-bold text-white">
-                        {unreadCount}
-                      </span>
+                      <>
+                        <span className="absolute top-0 right-0 w-4 h-4 bg-rose-500 rounded-full border-2 border-white dark:border-slate-900 flex items-center justify-center text-[9px] font-bold text-white z-10 animate-pulse-subtle">
+                          {unreadCount}
+                        </span>
+                        <span className="absolute top-0 right-0 w-4 h-4 bg-rose-500 rounded-full animate-ping opacity-75" />
+                      </>
                     )}
                   </button>
 
@@ -186,7 +191,8 @@ export const Navbar = () => {
                       setProfileDropdownOpen(!profileDropdownOpen);
                       setNotifDropdownOpen(false);
                     }}
-                    className="flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-darkbg-border dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 transition-all border border-transparent dark:border-white/5"
+                    title="User Profile"
+                    className="flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-xl bg-slate-200/40 hover:bg-slate-200/70 dark:bg-slate-800/40 dark:hover:bg-slate-800/70 text-slate-800 dark:text-slate-200 transition-all border border-slate-200/50 dark:border-white/5 backdrop-blur-md hover:scale-[1.02] active:scale-[0.98] hover:shadow-sm"
                   >
                     <div className="w-7 h-7 rounded-lg bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white font-bold text-xs uppercase shadow-sm">
                       {user.full_name ? user.full_name[0] : 'U'}
@@ -252,14 +258,14 @@ export const Navbar = () => {
           <div className="flex md:hidden items-center gap-3">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-xl bg-slate-100 dark:bg-darkbg-border text-slate-600 dark:text-slate-300"
+              className="p-2 rounded-xl bg-slate-200/40 dark:bg-slate-800/40 text-slate-600 dark:text-slate-300 border border-slate-200/50 dark:border-white/5 backdrop-blur-md"
             >
               {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl bg-slate-100 dark:bg-darkbg-border text-slate-600 dark:text-slate-300"
+              className="p-2 rounded-xl bg-slate-200/40 dark:bg-slate-800/40 text-slate-600 dark:text-slate-300 border border-slate-200/50 dark:border-white/5 backdrop-blur-md"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
