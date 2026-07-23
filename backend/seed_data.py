@@ -54,35 +54,34 @@ def seed():
         # Check if events already exist
         prom = db.query(Event).filter(Event.title == "PROM NIGHT 2026").first()
         if not prom:
-            prom = Event(
-                title="PROM NIGHT 2026",
-                description="Welcome to the highlight event of the year! Experience a magical evening filled with dance, networking, and glamour. YCN's annual Prom Night offers an unmatched atmosphere for students and young professionals to connect, build relationships, dance, and celebrate the future together. Join us for a formal night to remember!",
-                banner_url="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1200&auto=format&fit=crop",
-                venue="Grand Ballroom, Ritz-Carlton",
-                date=datetime.date(2026, 10, 24),
-                time=datetime.time(19, 0, 0),
-                capacity=150,
-                ticket_price=50.0,
-                registration_deadline=datetime.date(2026, 10, 20),
-                dress_code="Formal Black Tie / Elegant Evening Gowns",
-                gallery_images=json.dumps([
-                    "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&q=80&w=400",
-                    "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&q=80&w=400",
-                    "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&q=80&w=400"
-                ]),
-                status="published",
-                is_featured=True,
-                is_private=False,
-                agenda="- 19:00 | Guest Arrival & Red Carpet Photo Session\n- 19:45 | Welcome Address by YCN Team Leaders\n- 20:00 | Networking Icebreaker & Buffet Dinner Opens\n- 21:00 | Dance Floor Unleashed (Live DJ Set by DJ Pulse)\n- 22:30 | Prom Coronation Ceremony (King & Queen)\n- 23:00 | Late-Night Activities, Fun Games & Dessert Bar\n- 00:00 | Event Conclusion & Handoff Gifts",
-                rules="- Attendees must adhere strictly to the formal dress code.\n- Bring your YCN Digital ID on your phone or your registration QR check-in.\n- No external alcoholic beverages are permitted inside the Ritz Ballroom.\n- Respectful and professional behavior is mandated.",
-                faqs=json.dumps([
-                    {"q": "Who is eligible to participate?", "a": "All registered members of YCN, including students and early-career professionals, are invited."},
-                    {"q": "Is food and dinner included in the registration?", "a": "Yes! A full course gourmet buffet, snack booths, mocktail counter, and desserts are entirely included."},
-                    {"q": "Can I invite external friends?", "a": "Absolutely. But they must register a user account on the YCN Portal first and sign up before slots run out."}
-                ])
-            )
+            prom = Event(title="PROM NIGHT 2026")
             db.add(prom)
-            print("Seeded event: PROM NIGHT 2026")
+            
+        prom.description = "Vizag's most awaited Prom Night! Join us for a magical evening filled with dance, networking, and glamour. YCN's annual Prom Night offers an unmatched atmosphere for students and young professionals to connect, build relationships, dance, and celebrate the future together."
+        prom.banner_url = "/prom-night.jpg"
+        prom.venue = "Gram Coffee and Kitchen, Sagar Nagar, Yendada, Visakhapatnam - 530045"
+        prom.date = datetime.date(2026, 7, 31)
+        prom.time = datetime.time(17, 0, 0)
+        prom.capacity = 150
+        prom.ticket_price = 500.0
+        prom.registration_deadline = datetime.date(2026, 7, 30)
+        prom.dress_code = "Formal / Party Wear (Dress to Impress)"
+        prom.gallery_images = json.dumps([
+            "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&q=80&w=400",
+            "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&q=80&w=400",
+            "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&q=80&w=400"
+        ])
+        prom.status = "published"
+        prom.is_featured = True
+        prom.is_private = False
+        prom.agenda = "- 17:00 | Guest Arrival & Red Carpet Photo Session\n- 17:45 | Welcome Address by YCN Team Leaders\n- 18:00 | Networking Icebreaker & Buffet Dinner Opens\n- 19:00 | Dance Floor Unleashed (Live DJ Set by DJ Pulse)\n- 20:30 | Prom Coronation Ceremony (King & Queen)\n- 21:00 | Late-Night Activities & Fun Games\n- 22:00 | Event Conclusion"
+        prom.rules = "- Attendees must adhere strictly to the dress code: Dress to Impress.\n- Bring your YCN Digital ID on your phone or your registration QR check-in.\n- No external alcoholic beverages are permitted inside the venue.\n- Respectful and professional behavior is mandated."
+        prom.faqs = json.dumps([
+            {"q": "Who is eligible to participate?", "a": "All registered members of YCN, including students and early-career professionals, are invited."},
+            {"q": "Is food and dinner included in the registration?", "a": "Yes! A full course gourmet buffet, snack booths, mocktail counter, and desserts are entirely included."},
+            {"q": "Can I invite external friends?", "a": "Absolutely. But they must register a user account on the YCN Portal first and sign up before slots run out."}
+        ])
+        print("Seeded event: PROM NIGHT 2026")
             
         summit = db.query(Event).filter(Event.title == "AI & Innovation Summit 2026").first()
         if not summit:

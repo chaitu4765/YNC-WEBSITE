@@ -403,31 +403,36 @@ const initMockDb = () => {
       }
     ]));
   }
+  // Auto-clear cache if it contains outdated event details or image paths
+  const cachedEvents = localStorage.getItem('ycn_mock_events');
+  if (cachedEvents && (cachedEvents.includes('Ritz-Carlton') || cachedEvents.includes('prom-night.png'))) {
+    localStorage.removeItem('ycn_mock_events');
+  }
 
   if (!localStorage.getItem('ycn_mock_events')) {
     localStorage.setItem('ycn_mock_events', JSON.stringify([
       {
         id: 1,
         title: 'PROM NIGHT 2026',
-        description: "Welcome to the highlight event of the year! Experience a magical evening filled with dance, networking, and glamour. YCN's annual Prom Night offers an unmatched atmosphere for students and young professionals to connect, build relationships, dance, and celebrate the future together. Join us for a formal night to remember!",
-        banner_url: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1200&auto=format&fit=crop',
-        venue: 'Grand Ballroom, Ritz-Carlton',
-        date: '2026-10-24',
-        time: '19:00:00',
+        description: "Vizag's most awaited Prom Night! Join us for a magical evening filled with dance, networking, and glamour. YCN's annual Prom Night offers an unmatched atmosphere for students and young professionals to connect, build relationships, dance, and celebrate the future together.",
+        banner_url: '/prom-night.jpg',
+        venue: 'Gram Coffee and Kitchen, Sagar Nagar, Yendada, Visakhapatnam - 530045',
+        date: '2026-07-31',
+        time: '17:00:00',
         capacity: 150,
-        registration_deadline: '2026-10-20',
-        dress_code: 'Formal Black Tie / Elegant Evening Gowns',
+        registration_deadline: '2026-07-30',
+        dress_code: 'Formal / Party Wear (Dress to Impress)',
         gallery_images: JSON.stringify([
           'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&q=80&w=400',
           'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&q=80&w=400',
           'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&q=80&w=400'
         ]),
         status: 'published',
-        agenda: '- 19:00 | Guest Arrival & Red Carpet Photo Session\n- 19:45 | Welcome Address by YCN Team Leaders\n- 20:00 | Icebreaker & Buffet Dinner Opens\n- 21:00 | Dance Floor Unleashed (Live DJ Set)\n- 22:30 | Prom Coronation Ceremony\n- 23:00 | Late-Night Activities & Dessert Bar\n- 00:00 | Event Conclusion',
-        rules: '- Attendees must adhere to formal dress code.\n- Bring Digital ID card for verification.\n- Respectful conduct is required at all times.',
+        agenda: '- 17:00 | Guest Arrival & Red Carpet Photo Session\n- 17:45 | Welcome Address by YCN Team Leaders\n- 18:00 | Networking Icebreaker & Buffet Dinner Opens\n- 19:00 | Dance Floor Unleashed (Live DJ Set by DJ Pulse)\n- 20:30 | Prom Coronation Ceremony (King & Queen)\n- 21:00 | Late-Night Activities & Fun Games\n- 22:00 | Event Conclusion',
+        rules: '- Attendees must adhere strictly to the dress code: Dress to Impress.\n- Bring your YCN Digital ID on your phone or your registration QR check-in.\n- No external alcoholic beverages are permitted inside the venue.\n- Respectful and professional behavior is mandated.',
         faqs: JSON.stringify([
-          { q: 'Who is eligible to participate?', a: 'All registered members of YCN are welcome.' },
-          { q: 'Is dinner included?', a: 'Yes! A full gourmet buffet is included in your registration.' }
+          { q: 'Who is eligible to participate?', a: 'All registered members of YCN, including students and early-career professionals, are invited.' },
+          { q: 'Is food and dinner included in the registration?', a: 'Yes! A full course gourmet buffet, snack booths, mocktail counter, and desserts are entirely included.' }
         ]),
         created_at: new Date().toISOString()
       },
