@@ -162,7 +162,7 @@ export const UserDashboard = () => {
                     <Crown className="w-4 h-4 text-amber-500 animate-bounce" /> Premium VIP Membership
                   </span>
                   <span className="text-[10px] font-extrabold text-amber-600 dark:text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/20">
-                    $9.99 / yr
+                    ₹799 / yr
                   </span>
                 </div>
                 <p className="text-[11px] font-semibold text-slate-600 dark:text-slate-300 leading-snug">
@@ -295,7 +295,7 @@ export const UserDashboard = () => {
 
                           {reg.amount_paid !== undefined && reg.amount_paid > 0 && (
                             <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-200/60 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
-                              Paid: ${Number(reg.amount_paid).toFixed(2)}
+                              Paid: ₹{Number(reg.amount_paid).toFixed(2)}
                             </span>
                           )}
 

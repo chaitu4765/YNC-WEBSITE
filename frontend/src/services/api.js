@@ -709,7 +709,7 @@ const mockApi = {
       id: notifications.length + 1,
       user_id: user.id,
       title: 'Event Registered Successfully',
-      content: `You registered for '${event.title}'. Paid: $${amountPaid.toFixed(2)}${isPremDisc ? ' (15% Premium VIP Disc Applied!)' : ''}. Ref: ${paymentId}. See you at ${event.venue}!`,
+      content: `You registered for '${event.title}'. Paid: ₹${amountPaid.toFixed(2)}${isPremDisc ? ' (15% Premium VIP Disc Applied!)' : ''}. Ref: ${paymentId}. See you at ${event.venue}!`,
       is_read: false,
       created_at: new Date().toISOString()
     });

@@ -1,8 +1,55 @@
 import React, { useState, useEffect } from 'react';
 
+const parseTargetDate = (dateInput) => {
+  if (!dateInput) return new Date();
+  if (dateInput instanceof Date) return dateInput;
+
+  // 1. Try native parsing
+  let dateObj = new Date(dateInput);
+  if (!isNaN(dateObj.getTime())) {
+    return dateObj;
+  }
+
+  // 2. Try replacing dashes with slashes (Safari compatibility)
+  try {
+    const cleanInput = String(dateInput).replace(/-/g, '/').replace('T', ' ');
+    dateObj = new Date(cleanInput);
+    if (!isNaN(dateObj.getTime())) {
+      return dateObj;
+    }
+  } catch (e) {}
+
+  // 3. Strict manual fallback split
+  try {
+    const parts = String(dateInput).split(/[T ]/);
+    const datePart = parts[0];
+    const timePart = parts[1] || "00:00:00";
+
+    const dateSubparts = datePart.split('/');
+    const timeSubparts = timePart.split(':');
+
+    if (dateSubparts.length >= 3) {
+      const year = parseInt(dateSubparts[0], 10);
+      const month = parseInt(dateSubparts[1], 10) - 1; // 0-indexed
+      const day = parseInt(dateSubparts[2], 10);
+      
+      const hour = timeSubparts.length >= 1 ? parseInt(timeSubparts[0], 10) : 0;
+      const minute = timeSubparts.length >= 2 ? parseInt(timeSubparts[1], 10) : 0;
+      const second = timeSubparts.length >= 3 ? parseInt(timeSubparts[2], 10) : 0;
+
+      const parsedDate = new Date(year, month, day, hour, minute, second);
+      if (!isNaN(parsedDate.getTime())) {
+        return parsedDate;
+      }
+    }
+  } catch (err) {}
+
+  return new Date(); // Fallback to current time
+};
+
 export const CountdownTimer = ({ targetDate }) => {
   const calculateTimeLeft = () => {
-    const difference = +new Date(targetDate) - +new Date();
+    const difference = +parseTargetDate(targetDate) - +new Date();
     let timeLeft = {};
 
     if (difference > 0) {

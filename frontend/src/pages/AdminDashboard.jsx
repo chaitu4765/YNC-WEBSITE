@@ -834,7 +834,7 @@ export const AdminDashboard = () => {
 
               {/* Ticket Price */}
               <div className="flex flex-col gap-1">
-                <label>Ticket Price ($ USD)</label>
+                <label>Ticket Price (₹ INR)</label>
                 <input
                   type="number"
                   step="0.01"

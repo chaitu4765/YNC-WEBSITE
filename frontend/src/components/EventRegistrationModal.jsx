@@ -147,7 +147,7 @@ export const EventRegistrationModal = ({ event, isOpen, onClose, onSuccess, onUp
                     </div>
                     <div className="text-right">
                       <span className="text-2xl font-black text-primary dark:text-primary-light">
-                        {basePrice > 0 ? `$${basePrice.toFixed(2)}` : 'FREE'}
+                        {basePrice > 0 ? `₹${basePrice.toFixed(2)}` : 'FREE'}
                       </span>
                     </div>
                   </div>
@@ -215,17 +215,17 @@ export const EventRegistrationModal = ({ event, isOpen, onClose, onSuccess, onUp
                     <div className="p-4 rounded-2xl bg-primary/5 border border-primary/20 space-y-2 text-xs font-bold">
                       <div className="flex justify-between text-slate-500 dark:text-slate-400">
                         <span>Base Price</span>
-                        <span>${basePrice.toFixed(2)}</span>
+                        <span>₹{basePrice.toFixed(2)}</span>
                       </div>
                       {discountAmount > 0 && (
                         <div className="flex justify-between text-emerald-600 dark:text-emerald-400">
                           <span>Premium VIP 15% Discount</span>
-                          <span>-${discountAmount.toFixed(2)}</span>
+                          <span>-₹{discountAmount.toFixed(2)}</span>
                         </div>
                       )}
                       <div className="border-t border-primary/20 pt-2 flex justify-between text-sm font-extrabold text-slate-800 dark:text-white">
                         <span>Total Amount Payable</span>
-                        <span className="text-primary dark:text-primary-light">${finalPrice.toFixed(2)}</span>
+                        <span className="text-primary dark:text-primary-light">₹{finalPrice.toFixed(2)}</span>
                       </div>
                     </div>
                   )}
@@ -327,14 +327,14 @@ export const EventRegistrationModal = ({ event, isOpen, onClose, onSuccess, onUp
 
               {paymentMethod === 'paypal' && (
                 <div className="p-4 rounded-xl bg-slate-100 dark:bg-slate-900 text-xs font-semibold text-slate-500 text-center">
-                  You will be redirected to PayPal to authorize the payment of <strong>${finalPrice.toFixed(2)}</strong>.
+                  You will be redirected to PayPal to authorize the payment of <strong>₹{finalPrice.toFixed(2)}</strong>.
                 </div>
               )}
 
               {/* Total Payable Badge */}
               <div className="p-3 rounded-xl bg-slate-100 dark:bg-slate-900 flex justify-between items-center text-xs font-extrabold">
                 <span className="text-slate-500">Payable Amount</span>
-                <span className="text-base text-primary dark:text-primary-light">${finalPrice.toFixed(2)}</span>
+                <span className="text-base text-primary dark:text-primary-light">₹{finalPrice.toFixed(2)}</span>
               </div>
 
               {/* Navigation Actions */}
@@ -352,7 +352,7 @@ export const EventRegistrationModal = ({ event, isOpen, onClose, onSuccess, onUp
                   disabled={submitting}
                   className="flex-1 py-3 rounded-2xl text-sm font-bold text-white bg-gradient-to-r from-primary via-secondary to-accent shadow-lg shadow-primary/20 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 transition-all flex items-center justify-center gap-2"
                 >
-                  {submitting ? <Loader2 className="w-4 h-4 animate-spin" /> : `Pay $${finalPrice.toFixed(2)} & Confirm`}
+                  {submitting ? <Loader2 className="w-4 h-4 animate-spin" /> : `Pay ₹${finalPrice.toFixed(2)} & Confirm`}
                 </button>
               </div>
             </form>
