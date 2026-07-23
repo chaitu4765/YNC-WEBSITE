@@ -234,11 +234,10 @@ export const LandingPage = () => {
                         View Details
                       </Link>
                       <button
-                        onClick={() => handleRegisterClick(featuredEvent.id)}
-                        disabled={featuredEvent.available_seats <= 0}
-                        className="px-6 py-3 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-primary to-secondary hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:pointer-events-none"
+                        disabled
+                        className="px-6 py-3 rounded-xl text-xs font-bold text-slate-400 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 cursor-not-allowed flex items-center gap-1.5"
                       >
-                        Register Now
+                        <Clock className="w-4 h-4 text-secondary" /> Registrations Opening Soon
                       </button>
                     </div>
                   )}
@@ -389,11 +388,10 @@ export const LandingPage = () => {
                         </button>
                       ) : (
                         <button
-                          onClick={() => handleRegisterClick(event.id)}
-                          disabled={event.available_seats <= 0}
-                          className="px-4 py-2 rounded-xl text-xs font-bold text-white bg-primary hover:opacity-95 shadow-md active:scale-95 transition-all disabled:opacity-50"
+                          disabled
+                          className="px-4 py-2 rounded-xl text-xs font-bold text-slate-400 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 cursor-not-allowed flex items-center gap-1"
                         >
-                          Register
+                          <Clock className="w-3.5 h-3.5 text-secondary" /> Opening Soon
                         </button>
                       )}
                     </div>
