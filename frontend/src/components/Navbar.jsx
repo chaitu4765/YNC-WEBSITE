@@ -108,14 +108,7 @@ export const Navbar = () => {
 
           {/* Utility / User section - Desktop */}
           <div className="hidden md:flex items-center gap-4">
-            {/* Theme Toggle */}
-            <button
-              onClick={toggleTheme}
-              title="Toggle theme"
-              className="p-2 rounded-xl bg-slate-200/40 hover:bg-slate-200/70 dark:bg-slate-800/40 dark:hover:bg-slate-800/70 text-slate-600 dark:text-slate-300 border border-slate-200/50 dark:border-white/5 backdrop-blur-md transition-all hover:scale-105 hover:shadow-sm"
-            >
-              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button>
+
 
             {user ? (
               <>
@@ -256,12 +249,7 @@ export const Navbar = () => {
 
           {/* Hamburger Menu - Mobile */}
           <div className="flex md:hidden items-center gap-3">
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-xl bg-slate-200/40 dark:bg-slate-800/40 text-slate-600 dark:text-slate-300 border border-slate-200/50 dark:border-white/5 backdrop-blur-md"
-            >
-              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button>
+
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

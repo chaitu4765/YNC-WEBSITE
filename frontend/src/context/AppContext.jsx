@@ -8,7 +8,7 @@ export const useApp = () => useContext(AppContext);
 export const AppProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem('ycn_token'));
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
   const [events, setEvents] = useState([]);
   const [announcements, setAnnouncements] = useState([]);
   const [notifications, setNotifications] = useState([]);
@@ -24,35 +24,16 @@ export const AppProvider = ({ children }) => {
     }, 4000);
   };
 
-  // Initialize theme: Default to Light mode
+  // Lock application theme to Dark mode
   useEffect(() => {
-    const savedTheme = localStorage.getItem('ycn_theme');
-    if (savedTheme === 'dark') {
-      setIsDark(true);
-      document.documentElement.classList.add('dark');
-      document.body.classList.add('dark');
-    } else {
-      setIsDark(false);
-      document.documentElement.classList.remove('dark');
-      document.body.classList.remove('dark');
-      localStorage.setItem('ycn_theme', 'light');
-    }
+    setIsDark(true);
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark');
+    localStorage.setItem('ycn_theme', 'dark');
   }, []);
 
   const toggleTheme = () => {
-    setIsDark(prev => {
-      const next = !prev;
-      if (next) {
-        document.documentElement.classList.add('dark');
-        document.body.classList.add('dark');
-        localStorage.setItem('ycn_theme', 'dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-        document.body.classList.remove('dark');
-        localStorage.setItem('ycn_theme', 'light');
-      }
-      return next;
-    });
+    // Theme is locked to dark mode
   };
 
   // Load initial data

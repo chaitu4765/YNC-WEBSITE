@@ -90,7 +90,7 @@ export const CountdownTimer = ({ targetDate }) => {
       {timeItems.map((item, idx) => (
         <div key={idx} className="flex flex-col items-center">
           <div className="w-16 h-16 md:w-20 md:h-20 glass-card rounded-2xl flex items-center justify-center border border-white/20 dark:border-white/5 shadow-lg backdrop-blur-md">
-            <span className="text-xl md:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary-light via-secondary-light to-accent-light">
+            <span className="text-xl md:text-3xl font-extrabold text-white">
               {addLeadingZero(item.value ?? 0)}
             </span>
           </div>
