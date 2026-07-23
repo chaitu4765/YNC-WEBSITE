@@ -9,8 +9,23 @@ from sqlalchemy import func
 
 import sys
 import os
-# Add the parent directory of the current file to sys.path
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+import types
+
+# Ensure the "backend" package is discoverable.
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(current_dir)
+
+# If the physical "backend" folder does not exist in the parent directory,
+# we are running in an environment where the backend contents are at the root level.
+if not os.path.exists(os.path.join(parent_dir, "backend")):
+    if current_dir not in sys.path:
+        sys.path.insert(0, current_dir)
+    backend_module = types.ModuleType('backend')
+    backend_module.__path__ = [current_dir]
+    sys.modules['backend'] = backend_module
+else:
+    if parent_dir not in sys.path:
+        sys.path.insert(0, parent_dir)
 
 from backend.database import engine, Base, get_db
 from backend.models import User, Event, Registration, RecruitmentApplication, Announcement, Notification
