@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import { Calendar, MapPin, Clock, Shirt, Check, ArrowRight, Sparkles, Award, Users, Lightbulb, Compass, Heart } from 'lucide-react';
 
 export const LandingPage = () => {
-  const { events, user, registerForEvent, showToast } = useApp();
+  const { events, user, registerForEvent, showToast, refreshEvents } = useApp();
   const navigate = useNavigate();
 
   const [selectedEventForModal, setSelectedEventForModal] = useState(null);
@@ -28,6 +28,10 @@ export const LandingPage = () => {
       console.error(e);
     }
   };
+
+  React.useEffect(() => {
+    refreshEvents();
+  }, []);
 
   React.useEffect(() => {
     if (user) {

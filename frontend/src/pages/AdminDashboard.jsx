@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 
 export const AdminDashboard = () => {
-  const { user, showToast } = useApp();
+  const { user, showToast, refreshEvents, refreshAnnouncements } = useApp();
   const navigate = useNavigate();
 
   // Route control
@@ -56,6 +56,7 @@ export const AdminDashboard = () => {
       
       const eventsData = await api.getEvents();
       setEvents(eventsData);
+      if (refreshEvents) refreshEvents();
       
       const regsData = await api.getAdminRegistrations();
       setRegistrations(regsData);
@@ -65,6 +66,7 @@ export const AdminDashboard = () => {
       
       const membersData = await api.getAdminMembers();
       setMembers(membersData);
+      if (refreshAnnouncements) refreshAnnouncements();
     } catch (e) {
       console.error(e);
       showToast('Error syncing admin databases', 'error');

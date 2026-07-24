@@ -395,7 +395,10 @@ def get_admin_metrics(admin: User = Depends(get_current_admin), db: Session = De
             domain_recruitment[d] = 0
 
     # Monthly registrations (users joined per month)
-    monthly_data = db.query(func.strftime("%m", User.join_date), func.count(User.id)).group_by(func.strftime("%m", User.join_date)).all()
+    if db.bind.dialect.name == "postgresql":
+        monthly_data = db.query(func.to_char(User.join_date, "MM"), func.count(User.id)).group_by(func.to_char(User.join_date, "MM")).all()
+    else:
+        monthly_data = db.query(func.strftime("%m", User.join_date), func.count(User.id)).group_by(func.strftime("%m", User.join_date)).all()
     months_map = {"01": "Jan", "02": "Feb", "03": "Mar", "04": "Apr", "05": "May", "06": "Jun", "07": "Jul", "08": "Aug", "09": "Sep", "10": "Oct", "11": "Nov", "12": "Dec"}
     monthly_registrations = {months_map.get(m, m): count for m, count in monthly_data}
     
