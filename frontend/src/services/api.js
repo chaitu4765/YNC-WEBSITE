@@ -1,4 +1,8 @@
-const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
+let rawBaseUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
+if (rawBaseUrl && !rawBaseUrl.endsWith('/api') && !rawBaseUrl.endsWith('/api/')) {
+  rawBaseUrl = rawBaseUrl.endsWith('/') ? `${rawBaseUrl}api` : `${rawBaseUrl}/api`;
+}
+const BASE_URL = rawBaseUrl;
 
 // Helper to get auth headers
 const getHeaders = (isMultipart = false) => {
