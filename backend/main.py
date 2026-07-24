@@ -175,6 +175,14 @@ def get_events(db: Session = Depends(get_db)):
         results.append(e_dict)
     return results
 
+@app.get("/api/events/my-registrations", response_model=List[RegistrationResponse])
+def get_my_registrations(current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    regs = db.query(Registration).filter(Registration.user_id == current_user.id).all()
+    # Attach event to each registration
+    for r in regs:
+        r.event = db.query(Event).filter(Event.id == r.event_id).first()
+    return regs
+
 @app.get("/api/events/{event_id}", response_model=EventResponse)
 def get_event(event_id: int, db: Session = Depends(get_db)):
     event = db.query(Event).filter(Event.id == event_id).first()
@@ -294,13 +302,7 @@ def register_for_event(
     reg.event = event
     return reg
 
-@app.get("/api/events/my-registrations", response_model=List[RegistrationResponse])
-def get_my_registrations(current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
-    regs = db.query(Registration).filter(Registration.user_id == current_user.id).all()
-    # Attach event to each registration
-    for r in regs:
-        r.event = db.query(Event).filter(Event.id == r.event_id).first()
-    return regs
+
 
 
 # --- RECRUITMENT ---
