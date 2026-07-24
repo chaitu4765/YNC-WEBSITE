@@ -285,7 +285,7 @@ export const Navbar = () => {
           <Link
             to="/recruitment"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-sm font-bold text-slate-700 dark:text-slate-200 py-1"
+            className="text-sm font-bold text-slate-700 dark:text-slate-200 py-1 text-center"
           >
             Team Recruitment
           </Link>
